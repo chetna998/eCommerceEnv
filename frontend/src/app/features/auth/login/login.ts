@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../../core/services/auth-service';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-login',
   imports: [MatButtonModule, MatCardModule, MatInputModule, MatFormFieldModule, FormsModule],
@@ -25,11 +26,12 @@ export class Login {
     if (!this.email || !this.password) return;
     this.isLoading = true;
     //set temp loggedIn flag
-    this.authService.login({ email: this.email, password: this.password }).subscribe({
-      next: (success) => {
+    this.authService.login({ username: this.email, password: this.password }).subscribe({
+      next: success => {
         this.isLoading = false
         if(success) {
-          this.router.navigate(['/user'])
+          sessionStorage.setItem('sessionKey', success.access_token);
+          this.router.navigate(['/'])
         }
       },
       error: () => {

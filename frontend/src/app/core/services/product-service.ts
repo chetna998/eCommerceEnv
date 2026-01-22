@@ -22,5 +22,9 @@ export class ProductService {
  createProduct(data:Omit<Product, 'id'>){
   return this.http.post(this.baseurl, data)
  }
+
+ removeProduct(id:number){
+  return this.http.delete(`${this.baseurl}/${id}`)
+ }
  
 }

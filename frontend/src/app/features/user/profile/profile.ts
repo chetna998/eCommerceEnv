@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { UserService } from '../../../core/services/user-service';
 
 @Component({
   selector: 'app-profile',
@@ -7,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrl: './profile.scss',
 })
 export class Profile {
-
+  private userService = inject(UserService)
+  ngOnInit(){
+    this.userService.getUserProfile().subscribe((res) => {
+      console.log(res)
+    })
+  }
 }

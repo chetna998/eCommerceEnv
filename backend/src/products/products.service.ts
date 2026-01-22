@@ -36,6 +36,7 @@ export class ProductsService {
   }
 
   remove(id: number): void {
+    console.log(id);
     this.products = this.products.filter((p) => p.id !== id);
   }
 }
