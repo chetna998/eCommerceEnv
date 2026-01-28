@@ -8,11 +8,17 @@ import {
   provideClientHydration,
   withEventReplay,
 } from '@angular/platform-browser';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { dummyAuthInterceptorInterceptor } from './core/interceptors/dummy-auth-interceptor-interceptor';
+import { loadingInterceptor } from './core/interceptors/loading-interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideClientHydration(withEventReplay()),
     provideBrowserGlobalErrorListeners(),
     provideRouter(appRoutes),
+    provideHttpClient(
+      withInterceptors([dummyAuthInterceptorInterceptor, loadingInterceptor])
+    )
   ],
 };
