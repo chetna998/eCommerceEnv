@@ -5,6 +5,7 @@ import { routes } from './app.routes';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { dummyAuthInterceptorInterceptor } from './core/interceptors/dummy-auth-interceptor-interceptor';
 import { loadingInterceptor } from './core/interceptors/loading-interceptor';
+import { globalErrorInterceptor } from './core/interceptors/global-error-interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -12,7 +13,7 @@ export const appConfig: ApplicationConfig = {
     provideZonelessChangeDetection(),
     provideRouter(routes),
      provideHttpClient(
-      withInterceptors([dummyAuthInterceptorInterceptor, loadingInterceptor])
+      withInterceptors([dummyAuthInterceptorInterceptor, loadingInterceptor, globalErrorInterceptor])
     )
   ]
 };

@@ -8,7 +8,7 @@ import { Product } from '../interfaces/product.interface';
   providedIn: 'root',
 })
 export class ProductService {
- private baseurl = `${environment.apiBaseUrl}/products`;
+ private baseurl = `${environment.apiBaseUrl}/product4s`;
  private http = inject(HttpClient)
 
  getProducts():Observable<Product[]>{
