@@ -8,8 +8,8 @@ export const routes: Routes = [
         loadChildren: () => import('./features/products/product.routes').then(m => m.Product_Routes)
     },
     {
-        path: 'auth',
-        loadChildren: () => import('./features/auth/auth.routes').then(m => m.Auth_Routes),
+        path: 'login',
+        loadComponent: () => import('./features/auth/login/login').then(c => c.Login),
         canActivate: [loggedGuard]
     },
     {
